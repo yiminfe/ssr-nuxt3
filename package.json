@@ -1,0 +1,29 @@
+{
+  "private": true,
+  "scripts": {
+    "dev": "nuxt dev --port 3001",
+    "build": "nuxt build",
+    "generate": "nuxt generate",
+    "preview": "nuxt preview",
+    "postinstall": "nuxt prepare",
+    "serve": "PORT=3300 HOST=127.0.0.1 node .output/server/index.mjs",
+    "prod": "rm -rf dist && cp -a .output/. dist && pnpm pm2 start pm2.conf.json"
+  },
+  "devDependencies": {
+    "nuxt": "3.0.0-rc.11",
+    "rollup-plugin-visualizer": "^5.8.2",
+    "sass": "^1.55.0",
+    "unplugin-element-plus": "^0.4.1",
+    "vite-plugin-compression": "^0.5.1",
+    "vite-plugin-dynamic-import": "^1.2.2",
+    "vite-plugin-imagemin": "^0.6.1"
+  },
+  "dependencies": {
+    "@element-plus/icons-vue": "^2.0.9",
+    "element-plus": "^2.2.17",
+    "vue-i18n": "^9.2.2",
+    "workbox-core": "^6.5.4",
+    "workbox-sw": "^6.5.4",
+    "workbox-window": "^6.5.4"
+  }
+}

@@ -1,0 +1,10 @@
+{
+  // https://v3.nuxtjs.org/concepts/typescript
+  "extends": "./.nuxt/tsconfig.json",
+  "compilerOptions": {
+    "composite": true,
+    "strict": false,
+    "noImplicitAny": false,
+    "types": ["element-plus/global"]
+  }
+}
