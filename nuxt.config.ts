@@ -18,7 +18,9 @@ if (isProd) {
       gzipSize: true,
       brotliSize: true
     }) as any,
-    viteCompression(),
+    viteCompression({
+      algorithm: 'brotliCompress'
+    }),
     viteImagemin({
       gifsicle: {
         optimizationLevel: 7,

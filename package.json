@@ -7,7 +7,8 @@
     "preview": "nuxt preview",
     "postinstall": "nuxt prepare",
     "serve": "PORT=3300 HOST=127.0.0.1 node .output/server/index.mjs",
-    "prod": "rm -rf dist && cp -a .output/. dist && pnpm pm2 start pm2.conf.json"
+    "move": "rm -rf dist && cp -a .output/. dist",
+    "prod": "pnpm pm2 start pm2.conf.json"
   },
   "devDependencies": {
     "nuxt": "3.0.0-rc.11",
