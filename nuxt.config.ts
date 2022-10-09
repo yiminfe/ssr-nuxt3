@@ -107,8 +107,23 @@ export default defineNuxtConfig({
       preprocessorOptions: {
         scss: {
           additionalData:
-            '@import "@/assets/scss/variable.scss";@import "@/assets/scss/main.scss";'
+            '@import "@/assets/scss/variable.scss";@import "@/assets/scss/main.scss";',
+          charset: false
         }
+      },
+      postcss: {
+        plugins: [
+          {
+            postcssPlugin: 'internal:charset-removal',
+            AtRule: {
+              charset: atRule => {
+                if (atRule.name === 'charset') {
+                  atRule.remove()
+                }
+              }
+            }
+          }
+        ]
       }
     },
     server: {
