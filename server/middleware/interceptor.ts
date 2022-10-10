@@ -34,7 +34,7 @@ function renderLinks(modules: any) {
 }
 
 function renderWorkboxUpdate() {
-  return `<script>navigator.serviceWorker.addEventListener('message',function(event){if(event.data.meta==='workbox-broadcast-update'){window.location.reload()}})</script>`
+  return `<script>navigator&&navigator.serviceWorker&&navigator.serviceWorker.addEventListener('message',function(event){if(event.data.meta==='workbox-broadcast-update'){window.location.reload()}})</script>`
 }
 
 const isProd = process.env.NODE_ENV === 'production'
