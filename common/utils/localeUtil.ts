@@ -9,6 +9,7 @@ export function getDefaultLocale() {
 
   const locale = useCookie<string>('locale')
   if (!locale.value) {
+    locale.value = 'zh'
     if (process.server) {
       const nuxtApp = useNuxtApp()
       const reqLocale =
@@ -21,8 +22,6 @@ export function getDefaultLocale() {
       if (navLang) {
         locale.value = language[navLang.toLowerCase()]
       }
-    } else {
-      locale.value = 'zh'
     }
   }
   return locale.value

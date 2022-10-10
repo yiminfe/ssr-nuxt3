@@ -3,33 +3,29 @@ lockfileVersion: 5.4
 specifiers:
   '@element-plus/icons-vue': ^2.0.9
   element-plus: ^2.2.17
+  etag: ^1.8.1
   nuxt: 3.0.0-rc.11
   rollup-plugin-visualizer: ^5.8.2
   sass: ^1.55.0
   unplugin-element-plus: ^0.4.1
   vite-plugin-compression: ^0.5.1
-  vite-plugin-dynamic-import: ^1.2.2
   vite-plugin-imagemin: ^0.6.1
   vue-i18n: ^9.2.2
-  workbox-core: ^6.5.4
-  workbox-sw: ^6.5.4
   workbox-window: ^6.5.4
 
 dependencies:
   '@element-plus/icons-vue': 2.0.9_vue@3.2.40
   element-plus: 2.2.17_vue@3.2.40
   vue-i18n: 9.2.2_vue@3.2.40
-  workbox-core: 6.5.4
-  workbox-sw: 6.5.4
   workbox-window: 6.5.4
 
 devDependencies:
+  etag: 1.8.1
   nuxt: 3.0.0-rc.11_sass@1.55.0
   rollup-plugin-visualizer: 5.8.2_rollup@2.79.1
   sass: 1.55.0
   unplugin-element-plus: 0.4.1_rollup@2.79.1+vite@3.1.6
   vite-plugin-compression: 0.5.1_vite@3.1.6
-  vite-plugin-dynamic-import: 1.2.2
   vite-plugin-imagemin: 0.6.1_vite@3.1.6
 
 packages:
@@ -6221,10 +6217,6 @@ packages:
       - supports-color
     dev: true
 
-  /vite-plugin-dynamic-import/1.2.2:
-    resolution: {integrity: sha512-50m5Whh9ZLzJouIcHhSzlcrieXx3YUiWAel4twcaNvZIlV9AbRud8e1qAunzpHZKTKPwujhkZps3O6XwebRGLg==}
-    dev: true
-
   /vite-plugin-imagemin/0.6.1_vite@3.1.6:
     resolution: {integrity: sha512-cP7LDn8euPrji7WYtDoNQpJEB9nkMxJHm/A+QZnvMrrCSuyo/clpMy/T1v7suDXPBavsDiDdFdVQB5p7VGD2cg==}
     peerDependencies:
@@ -6435,10 +6427,6 @@ packages:
 
   /workbox-core/6.5.4:
     resolution: {integrity: sha512-OXYb+m9wZm8GrORlV2vBbE5EC1FKu71GGp0H4rjmxmF4/HLbMCoTFws87M3dFwgpmg0v00K++PImpNQ6J5NQ6Q==}
-    dev: false
-
-  /workbox-sw/6.5.4:
-    resolution: {integrity: sha512-vo2RQo7DILVRoH5LjGqw3nphavEjK4Qk+FenXeUsknKn14eCNedHOXWbmnvP4ipKhlE35pvJ4yl4YYf6YsJArA==}
     dev: false
 
   /workbox-window/6.5.4:

@@ -64,7 +64,7 @@ export default defineNuxtPlugin(nuxtApp => {
   vueApp.component('el-backtop', ElBacktop)
 
   vueApp.provide(ID_INJECTION_KEY, {
-    prefix: Math.floor(Math.random() * 10000),
+    prefix: 100,
     current: 0
   })
 })

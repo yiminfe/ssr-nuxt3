@@ -1,6 +1,7 @@
 // https://v3.nuxtjs.org/api/configuration/nuxt-config
+import fs from 'node:fs'
+import path from 'node:path'
 import ElementPlus from 'unplugin-element-plus/vite'
-import dynamicImport from 'vite-plugin-dynamic-import'
 import viteCompression from 'vite-plugin-compression'
 import viteImagemin from 'vite-plugin-imagemin'
 import { visualizer } from 'rollup-plugin-visualizer'
@@ -8,7 +9,7 @@ import { visualizer } from 'rollup-plugin-visualizer'
 const isProd = process.env.NODE_ENV === 'production'
 console.log('isProd:', isProd)
 
-const vitePlugins = [dynamicImport()]
+const vitePlugins = []
 const viteDefine: any = {}
 if (isProd) {
   vitePlugins.push(
@@ -88,7 +89,12 @@ export default defineNuxtConfig({
   },
   build: {
     quiet: false
-    // transpile: ['element-plus/es']
+  },
+  hooks: {
+    'build:manifest': manifest => {
+      const manifestFilePath = path.join('manifest.json')
+      fs.writeFileSync(manifestFilePath, JSON.stringify(manifest, null, 2))
+    }
   },
   experimental: {
     inlineSSRStyles: false
@@ -101,7 +107,9 @@ export default defineNuxtConfig({
           drop_console: true,
           drop_debugger: true
         }
-      }
+      },
+      sourcemap: true,
+      manifest: true
     },
     define: viteDefine,
     plugins: vitePlugins,
@@ -109,23 +117,8 @@ export default defineNuxtConfig({
       preprocessorOptions: {
         scss: {
           additionalData:
-            '@import "@/assets/scss/variable.scss";@import "@/assets/scss/main.scss";',
-          charset: false
+            '@import "@/assets/scss/variable.scss";@import "@/assets/scss/main.scss";'
         }
-      },
-      postcss: {
-        plugins: [
-          {
-            postcssPlugin: 'internal:charset-removal',
-            AtRule: {
-              charset: atRule => {
-                if (atRule.name === 'charset') {
-                  atRule.remove()
-                }
-              }
-            }
-          }
-        ]
       }
     },
     server: {
