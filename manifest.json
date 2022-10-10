@@ -269,45 +269,45 @@
     "file": "OrderPopover.1c9ca836.css",
     "resourceType": "style"
   },
-  "components/order/OrderPopover.css": {
-    "resourceType": "style",
-    "file": "OrderPopover.1c9ca836.css",
-    "src": "components/order/OrderPopover.css"
-  },
   "pages/detail/[id].css": {
     "resourceType": "style",
     "file": "_id_.c9c3af5c.css",
     "src": "pages/detail/[id].css"
-  },
-  "layouts/default.css": {
-    "resourceType": "style",
-    "file": "default.d8765ddc.css",
-    "src": "layouts/default.css"
-  },
-  "node_modules/.pnpm/@nuxt+ui-templates@0.4.0/node_modules/@nuxt/ui-templates/dist/templates/error-404.css": {
-    "resourceType": "style",
-    "file": "error-404.eac13d93.css",
-    "src": "node_modules/.pnpm/@nuxt+ui-templates@0.4.0/node_modules/@nuxt/ui-templates/dist/templates/error-404.css"
-  },
-  "node_modules/.pnpm/@nuxt+ui-templates@0.4.0/node_modules/@nuxt/ui-templates/dist/templates/error-500.css": {
-    "resourceType": "style",
-    "file": "error-500.a37da814.css",
-    "src": "node_modules/.pnpm/@nuxt+ui-templates@0.4.0/node_modules/@nuxt/ui-templates/dist/templates/error-500.css"
   },
   "pages/index.css": {
     "resourceType": "style",
     "file": "index.95aaa00b.css",
     "src": "pages/index.css"
   },
-  "pages/login.css": {
+  "layouts/default.css": {
     "resourceType": "style",
-    "file": "login.7ef9e708.css",
-    "src": "pages/login.css"
+    "file": "default.d8765ddc.css",
+    "src": "layouts/default.css"
   },
   "pages/record.css": {
     "resourceType": "style",
     "file": "record.8612fb55.css",
     "src": "pages/record.css"
+  },
+  "node_modules/.pnpm/@nuxt+ui-templates@0.4.0/node_modules/@nuxt/ui-templates/dist/templates/error-404.css": {
+    "resourceType": "style",
+    "file": "error-404.eac13d93.css",
+    "src": "node_modules/.pnpm/@nuxt+ui-templates@0.4.0/node_modules/@nuxt/ui-templates/dist/templates/error-404.css"
+  },
+  "pages/login.css": {
+    "resourceType": "style",
+    "file": "login.7ef9e708.css",
+    "src": "pages/login.css"
+  },
+  "node_modules/.pnpm/@nuxt+ui-templates@0.4.0/node_modules/@nuxt/ui-templates/dist/templates/error-500.css": {
+    "resourceType": "style",
+    "file": "error-500.a37da814.css",
+    "src": "node_modules/.pnpm/@nuxt+ui-templates@0.4.0/node_modules/@nuxt/ui-templates/dist/templates/error-500.css"
+  },
+  "components/order/OrderPopover.css": {
+    "resourceType": "style",
+    "file": "OrderPopover.1c9ca836.css",
+    "src": "components/order/OrderPopover.css"
   },
   "node_modules/.pnpm/nuxt@3.0.0-rc.11_sass@1.55.0/node_modules/nuxt/dist/app/entry.css": {
     "resourceType": "style",
