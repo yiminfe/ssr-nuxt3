@@ -33,6 +33,10 @@ function renderLinks(modules: any) {
   return links
 }
 
+function renderWorkboxUpdate() {
+  return `<script>navigator.serviceWorker.addEventListener('message',function(event){if(event.data.meta==='workbox-broadcast-update'){window.location.reload()}})</script>`
+}
+
 const isProd = process.env.NODE_ENV === 'production'
 
 export default defineEventHandler(event => {
@@ -43,8 +47,11 @@ export default defineEventHandler(event => {
       let newHtml = html
       if (isProd) {
         const prefetchLinks = renderLinks(pages)
-        console.log('prefetchLinks', prefetchLinks)
-        newHtml = newHtml.replace('</head>', `${prefetchLinks}</head>`)
+        const workboxUpdate = renderWorkboxUpdate()
+        newHtml = newHtml.replace(
+          '</head>',
+          `${prefetchLinks}${workboxUpdate}</head>`
+        )
       }
       res.setHeader('ETag', createEtag(newHtml))
       return originalEnd(newHtml)

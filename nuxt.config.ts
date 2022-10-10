@@ -7,7 +7,6 @@ import viteImagemin from 'vite-plugin-imagemin'
 import { visualizer } from 'rollup-plugin-visualizer'
 
 const isProd = process.env.NODE_ENV === 'production'
-console.log('isProd:', isProd)
 
 const vitePlugins = []
 const viteDefine: any = {}
