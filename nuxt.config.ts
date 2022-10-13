@@ -1,23 +1,42 @@
 // https://v3.nuxtjs.org/api/configuration/nuxt-config
 import fs from 'node:fs'
+import { fileURLToPath, URL } from 'node:url'
 import path from 'node:path'
+// import ElementPlus from 'unplugin-element-plus/webpack'
 import ElementPlus from 'unplugin-element-plus/vite'
 import viteCompression from 'vite-plugin-compression'
 import viteImagemin from 'vite-plugin-imagemin'
 import { visualizer } from 'rollup-plugin-visualizer'
+// import qiankun from 'vite-plugin-qiankun'
+// import CompressionPlugin from 'compression-webpack-plugin'
+// import ImageMinimizerPlugin from 'image-minimizer-webpack-plugin'
 
 const isProd = process.env.NODE_ENV === 'production'
+const CDN_URL = isProd ? 'https://static.yiminfe.com/nuxt-ssr' : ''
 
-const vitePlugins = []
+const vitePlugins: any[] = []
 const viteDefine: any = {}
 if (isProd) {
   vitePlugins.push(
-    ElementPlus(),
+    // qiankun('nuxt-ssr'),
     visualizer({
       emitFile: true,
       gzipSize: true,
       brotliSize: true
-    }) as any,
+    }),
+    // legacy({
+    //   targets: ['> 100%']
+    //   // modernPolyfills: ['modules'],
+    //   // renderLegacyChunks: false
+    // }),
+    // babel({
+    //   babelConfig: {
+    //     babelrc: false,
+    //     configFile: false,
+    //     plugin: []
+    //   }
+    // }),
+    ElementPlus(),
     viteCompression({
       algorithm: 'brotliCompress'
     }),
@@ -56,8 +75,11 @@ if (isProd) {
 }
 
 export default defineNuxtConfig({
+  builder: 'vite',
   app: {
+    // baseURL: '/nuxt-ssr',
     keepalive: true,
+    cdnURL: CDN_URL,
     head: {
       charset: 'utf-8',
       htmlAttrs: {
@@ -73,11 +95,29 @@ export default defineNuxtConfig({
       ],
       link: [
         // <link rel="stylesheet" href="https://myawesome-lib.css">
-        { rel: 'icon', href: '/favicon.ico' },
-        { rel: 'mask-icon', href: '/logo.svg', color: '#FFFFFF' },
-        { rel: 'apple-touch-icon', href: '/logo.svg', sizes: '180x180' },
-        { rel: 'manifest', href: '/manifest.webmanifest' }
+        {
+          rel: 'icon',
+          href: `${CDN_URL}/favicon.ico`
+        },
+        {
+          rel: 'mask-icon',
+          href: `${CDN_URL}/logo.svg`,
+          color: '#FFFFFF'
+        },
+        {
+          rel: 'apple-touch-icon',
+          href: `${CDN_URL}/logo.svg`,
+          sizes: '180x180'
+        },
+        {
+          rel: 'manifest',
+          href: `${CDN_URL}/manifest.webmanifest`
+        }
       ]
+      // script: [
+      //   // <script src="https://myawesome-lib.js"></script>
+      //   { src: `${CDN_URL}/public-path.js` }
+      // ]
     }
   },
   typescript: {
@@ -88,10 +128,11 @@ export default defineNuxtConfig({
   },
   build: {
     quiet: false
+    // transpile: ['element-plus/es']
   },
   hooks: {
     'build:manifest': manifest => {
-      const manifestFilePath = path.join('manifest.json')
+      const manifestFilePath = path.join('server', 'manifest.json')
       fs.writeFileSync(manifestFilePath, JSON.stringify(manifest, null, 2))
     }
   },
@@ -99,6 +140,7 @@ export default defineNuxtConfig({
     inlineSSRStyles: false
   },
   vite: {
+    // base: 'http://localhost:3300/',
     build: {
       minify: 'terser',
       terserOptions: {
@@ -107,11 +149,29 @@ export default defineNuxtConfig({
           drop_debugger: true
         }
       },
-      sourcemap: true,
-      manifest: true
+      sourcemap: true
+      //   plugins: [
+      //     vue(),
+      //     terser(),
+      //     postcss({
+      //       plugins: [autoprefixer(), cssnano()],
+      //       extract: 'bundle.css'
+      //     })
+      //     // scss({
+      //     //   processor: () => postcss([autoprefixer()]) as any,
+      //     //   prefix:
+      //     //     '@import "@/assets/scss/variable.scss";@import "@/assets/scss/main.scss";'
+      //     // })
+      //   ]
+      // }
     },
     define: viteDefine,
     plugins: vitePlugins,
+    resolve: {
+      alias: {
+        '@': fileURLToPath(new URL('./', import.meta.url))
+      }
+    },
     css: {
       preprocessorOptions: {
         scss: {
@@ -119,15 +179,58 @@ export default defineNuxtConfig({
             '@import "@/assets/scss/variable.scss";@import "@/assets/scss/main.scss";'
         }
       }
-    },
-    server: {
-      proxy: {
-        '/release': {
-          target: 'https://ssr.yiminfe.com',
-          rewrite: path => path.replace(/^\/release/, ''),
-          changeOrigin: true
-        }
-      }
     }
+    // ssr: {
+    //   noExternal: ['terser', 'legacy-generate-polyfill-chunk']
+    // },
+    // server: {
+    //   proxy: {
+    //     '/release': {
+    //       target: 'https://nuxt.yiminfe.com',
+    //       rewrite: path => path.replace(/^\/release/, ''),
+    //       changeOrigin: true
+    //     }
+    //   }
+    // }
   }
+  // webpack: {
+  //   loaders: {
+  //     scss: {
+  //       additionalData:
+  //         '@import "@/assets/scss/variable.scss";@import "@/assets/scss/main.scss";'
+  //     }
+  //   },
+  //   plugins: [
+  //     ElementPlus(),
+  //     new CompressionPlugin({
+  //       filename: '[path][base].br',
+  //       algorithm: 'brotliCompress',
+  //       test: /\.(js|css|html|svg)$/,
+  //       compressionOptions: {
+  //         level: 11
+  //       },
+  //       deleteOriginalAssets: false
+  //     })
+  //   ],
+  //   optimization: {
+  //     usedExports: true,
+  //     minimizer: [
+  //       new ImageMinimizerPlugin({
+  //         minimizer: {
+  //           implementation: ImageMinimizerPlugin.imageminMinify,
+  //           options: {
+  //             plugins: [['jpegtran', { progressive: true }]]
+  //           },
+  //           // Only apply this one to files equal to or over 8192 bytes
+  //           filter: source => {
+  //             if (source.byteLength >= 8192) {
+  //               return true
+  //             }
+  //             return false
+  //           }
+  //         }
+  //       })
+  //     ]
+  //   }
+  // }
 })

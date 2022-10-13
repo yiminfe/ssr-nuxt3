@@ -1,7 +1,6 @@
 {
   // https://v3.nuxtjs.org/concepts/typescript
   "extends": "./.nuxt/tsconfig.json",
-  "include": ["manifest.json"],
   "compilerOptions": {
     "composite": true,
     "strict": false,
@@ -10,4 +9,5 @@
     "types": ["element-plus/global"],
     "resolveJsonModule": true
   }
+  // "include": ["./server/manifest.json"]
 }

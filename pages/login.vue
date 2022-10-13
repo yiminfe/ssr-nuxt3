@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { useI18n } from 'vue-i18n'
+import bjImage from '@/assets/images/login/bg.png'
 
 definePageMeta({
   title: '登录 | 注册'
@@ -42,7 +43,10 @@ onActivated(() => {
 
 <template>
   <div class="login-page">
-    <div class="left-part"></div>
+    <div
+      class="left-part"
+      :style="{ backgroundImage: `url(${bjImage})` }"
+    ></div>
     <div class="right-part">
       <div class="login-panel">
         <!-- tabs -->

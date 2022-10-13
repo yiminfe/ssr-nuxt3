@@ -8,8 +8,13 @@ useWatchUserStatus()
   <el-backtop :right="100" :bottom="100" />
   <NuxtLoadingIndicator :height="4" color="#409EFF" />
   <el-config-provider :locale="locale">
-    <NuxtLayout>
+    <CommonLayout>
       <NuxtPage />
-    </NuxtLayout>
+    </CommonLayout>
   </el-config-provider>
 </template>
+
+<style lang="scss">
+@import '@/assets/scss/variable.scss';
+@import '@/assets/scss/main.scss';
+</style>

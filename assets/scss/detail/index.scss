@@ -74,25 +74,22 @@
       }
       &.room {
         &::before {
-          background: url(../../images/detail/room.png) no-repeat;
           background-size: 16px;
         }
       }
+
       &.bed {
         &::before {
-          background: url(../../images/detail/bed.png) no-repeat;
           background-size: 16px;
         }
       }
       &.toilet {
         &::before {
-          background: url(../../images/detail/toilet.png) no-repeat;
           background-size: 16px;
         }
       }
       &.live-number {
         &::before {
-          background: url(../../images/detail/liveNumber.png) no-repeat;
           background-size: 16px;
         }
       }

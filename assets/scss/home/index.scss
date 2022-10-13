@@ -1,8 +1,9 @@
+@import '../variable.scss';
+
 .home-page {
   .banner {
     height: 530px;
     width: 100%;
-    background: url(../../images/home/banner.jpg) no-repeat;
     background-size: cover;
     background-position: center;
   }

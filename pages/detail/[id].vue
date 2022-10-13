@@ -1,6 +1,10 @@
 <script setup lang="ts">
 import { saveRecordApi } from '~~/common/api/record'
 import { saveOrderApi } from '~~/common/api/order'
+import roomPng from '@/assets/images/detail/room.png'
+import bedPng from '@/assets/images/detail/bed.png'
+import toiletPng from '@/assets/images/detail/toilet.png'
+import liveNumberPng from '@/assets/images/detail/liveNumber.png'
 
 console.log('详情页初始化')
 
@@ -71,7 +75,7 @@ function saveRecord() {
 
 onMounted(() => {
   console.log('详情页 onMounted')
-  saveRecord()
+  // saveRecord()
 })
 
 onActivated(() => {
@@ -82,13 +86,13 @@ onActivated(() => {
 <template>
   <div>
     <!-- Toast -->
-    <Teleport to="#__nuxt" v-if="toastVisible">
+    <!-- <Teleport to="#__nuxt" v-if="toastVisible">
       <el-alert
         :title="$t('detail.reservated')"
         type="success"
         :closable="false"
       ></el-alert>
-    </Teleport>
+    </Teleport> -->
     <div v-if="data.result && data.result.info && data.result.owner">
       <!-- 照片墙 -->
       <el-carousel
@@ -115,17 +119,21 @@ onActivated(() => {
             <h2>{{ data.result.title }}</h2>
             <!-- 房屋信息 -->
             <div class="info">
-              <span class="room"
+              <span class="room" :style="{ backgroundImage: `url(${roomPng})` }"
                 >{{ data.result.info.room }} {{ $t('detail.rooms') }}</span
               >
-              <span class="bed"
+              <span class="bed" :style="{ backgroundImage: `url(${bedPng})` }"
                 >{{ data.result.info.bed }} {{ $t('detail.beds') }}</span
               >
-              <span class="toilet"
+              <span
+                class="toilet"
+                :style="{ backgroundImage: `url(${toiletPng})` }"
                 >{{ data.result.info.toilet }}
                 {{ $t('detail.bathrooms') }}</span
               >
-              <span class="live-number"
+              <span
+                class="live-number"
+                :style="{ backgroundImage: `url(${liveNumberPng})` }"
                 >{{ $t('detail.living') }} {{ data.result.info.liveNumber }}
                 {{ $t('detail.personNumber') }}</span
               >

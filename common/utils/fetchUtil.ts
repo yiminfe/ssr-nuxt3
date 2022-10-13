@@ -1,3 +1,4 @@
+import { apiUrl } from '../configs/global'
 import { AsyncData, BaseParams, SearchParams } from '../types/fetchType'
 
 function getKey(url: string, method: string, { params, query }: BaseParams) {
@@ -16,7 +17,7 @@ function baseFetch(
 ) {
   const path = `/api${url}`
   return useFetch(path, {
-    baseURL: import.meta.env.VITE_APP_API_URL,
+    baseURL: apiUrl,
     key: getKey(url, method, { params, query }),
     method,
     params,

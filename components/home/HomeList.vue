@@ -50,6 +50,7 @@ watch([pageNo, pageSize, cityCode], ([newPageNo, newPageSize, newCityCode]) => {
 
   <!-- 分页 -->
   <CommonPagination
+    v-if="!pending"
     v-model:pageNo="pageNo"
     v-model:pageSize="pageSize"
     :total="data.result.total"

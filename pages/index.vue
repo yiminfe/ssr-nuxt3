@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import bannerImage from '@/assets/images/home/banner.jpg'
 definePageMeta({
   title: '首页'
 })
@@ -13,7 +14,10 @@ onActivated(() => {
 <template>
   <div class="home-page">
     <!-- banner -->
-    <div class="banner"></div>
+    <div
+      class="banner"
+      :style="{ backgroundImage: `url(${bannerImage})` }"
+    ></div>
     <!-- 房屋列表 -->
     <div class="main-wapper">
       <h2 class="title">{{ $t('home.h2Title') }}</h2>
