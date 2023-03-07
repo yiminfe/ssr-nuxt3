@@ -1,7 +1,7 @@
 {
   "name": "ssr-nuxt3",
   "lang": "zh",
-  "start_url": "/?standalone=true",
+  "start_url": "https://nuxt.yiminfe.com/?standalone=true",
   "short_name": "ssr",
   "display": "standalone",
   "description": "ssr App description",
