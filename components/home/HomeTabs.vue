@@ -15,20 +15,12 @@ watch(cityCode, newCityCode => {
 
 const cityArr = [
   {
-    cityCode: 'hz',
-    cityName: '杭州'
-  },
-  {
-    cityCode: 'sh',
-    cityName: '上海'
+    cityCode: 'cd',
+    cityName: '成都'
   },
   {
     cityCode: 'nj',
     cityName: '南京'
-  },
-  {
-    cityCode: 'cd',
-    cityName: '成都'
   },
   {
     cityCode: 'cq',

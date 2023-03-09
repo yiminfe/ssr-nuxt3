@@ -3,7 +3,7 @@ import { RoomListParams } from '~~/common/types/fetchType'
 
 const pageNo = ref(1)
 const pageSize = ref(12)
-const cityCode = ref('hz')
+const cityCode = ref('cd')
 const roomListParams: RoomListParams = {
   pageNo: pageNo.value,
   pageSize: pageSize.value,
