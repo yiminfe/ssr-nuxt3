@@ -1,0 +1,31 @@
+{
+  "name": "ssr-nuxt3",
+  "lang": "zh",
+  "start_url": "https://nuxt.yiminfe.com/?standalone=true",
+  "short_name": "ssr",
+  "display": "standalone",
+  "description": "ssr App description",
+  "theme_color": "#fff",
+  "background_color": "#fff",
+  "orientation": "any",
+  "icons": [
+    {
+      "src": "icons/icon-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "icons/icon-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "icons/icon_light.svg",
+      "sizes": "155x155",
+      "type": "image/svg",
+      "purpose": "maskable"
+    }
+  ]
+}
